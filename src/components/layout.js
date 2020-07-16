@@ -1,18 +1,17 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { Link, graphql, useStaticQuery } from "gatsby"
+import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap"
+import { Helmet } from "react-helmet"
 
-import Header from "./header"
-import "./layout.css"
+import { SpoilerProvider } from "../context/SpoilerContext"
 
-const Layout = ({ children }) => {
+const Layout = ({
+  backgroundColor,
+  currentGame,
+  navButtons,
+  variant,
+  children,
+}) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -20,32 +19,68 @@ const Layout = ({ children }) => {
           title
         }
       }
+      allGamesCsv(sort: { order: DESC, fields: week }) {
+        nodes {
+          week
+          slug
+          name
+        }
+      }
     }
   `)
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
+      <Helmet>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap"
+          rel="stylesheet"
+        ></link>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Playball&display=swap"
+          rel="stylesheet"
+        ></link>
+        <style type="text/css">{`
+          body {
+            background-color: ${backgroundColor};
+          }
+      `}</style>
+      </Helmet>
+      <SpoilerProvider>
+        <Navbar variant={variant} expand="lg">
+          <Navbar.Toggle aria-controls="navbarSupportedContent" />
+          <Navbar.Collapse id="navbarSupportedContent">
+            <Nav className="mr-auto">
+              <NavDropdown title={currentGame || "Games"} id="weeksDropdown">
+                {data.allGamesCsv.nodes.map(({ name, slug, week }) => (
+                  <NavDropdown.Item as={Link} to={`/${slug}`} key={week}>
+                    {name}
+                  </NavDropdown.Item>
+                ))}
+              </NavDropdown>
+              <Nav.Link
+                as={Link}
+                to="/medals"
+                id="medalsLink"
+                activeClassName="active"
+              >
+                Medals
+              </Nav.Link>
+            </Nav>
+            <Nav>{navButtons}</Nav>
+          </Navbar.Collapse>
+        </Navbar>
+        <Container>{children}</Container>
+      </SpoilerProvider>
     </>
   )
 }
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+Layout.defaultProps = {
+  backgroundColor: "#202020",
+  currentGame: null,
+  navButtons: null,
+  variant: "dark",
 }
 
 export default Layout
