@@ -5,7 +5,7 @@ import YoutubeLink from "./YoutubeLink"
 const Score = ({ day, allNotes }) => {
   const { showSpoilers } = useContext(SpoilerContext)
   const { place, score, youtube, notes } = day
-  const noteIndex = allNotes.findIndex(n => n == notes)
+  const noteIndex = allNotes.findIndex(n => n === notes)
 
   return (
     <td>

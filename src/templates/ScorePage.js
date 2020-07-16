@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/Layout"
+import SEO from "../components/SEO"
 import SpoilerButton from "../components/SpoilerButton"
 import ScoreTable from "../components/ScoreTable"
 import ScoreFootnotes from "../components/ScoreFootnotes"
@@ -21,7 +22,8 @@ export default function ScorePage({ data, pageContext }) {
       backgroundColor={backgroundColor}
       navButtons={<SpoilerButton />}
     >
-      <ImageHeader data={data.gameImage} />
+      <SEO />
+      <ImageHeader data={data.gameImage} alt={`${name} Logo`} />
       <ScoreTable data={data.scores.nodes} notes={notes} />
       <ResultsTable data={data.scores.nodes} />
       <ScoreFootnotes notes={notes} />

@@ -17,7 +17,7 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
   createPage({
     path: "/",
-    component: path.resolve(`./src/templates/ScorePage.tsx`),
+    component: path.resolve(`./src/templates/ScorePage.js`),
     context: {
       week: result.data.allGamesCsv.nodes[0].week,
       name: result.data.allGamesCsv.nodes[0].name,
@@ -30,7 +30,7 @@ exports.createPages = async ({ graphql, actions }) => {
     ({ week, name, slug, image, backgroundColor }) => {
       createPage({
         path: slug,
-        component: path.resolve(`./src/templates/ScorePage.tsx`),
+        component: path.resolve(`./src/templates/ScorePage.js`),
         context: {
           week,
           name,

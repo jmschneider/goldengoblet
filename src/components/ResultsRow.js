@@ -12,7 +12,7 @@ const ResultsRow = ({ data, place }) => {
       <th scope="row">{RESULTS_LABELS[place]}</th>
       {data.map(score => (
         <td className={place} key={score.id}>
-          {score.days.filter(day => day.place == place).length}
+          {score.days.filter(day => day.place === place).length}
         </td>
       ))}
     </tr>

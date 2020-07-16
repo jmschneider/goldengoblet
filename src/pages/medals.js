@@ -5,12 +5,14 @@ import { Table, Row, Col } from "react-bootstrap"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import Layout from "../components/Layout"
+import SEO from "../components/SEO"
 import MedalsTable from "../components/MedalsTable"
 import GobletWins from "../components/GobletWins"
 
 const MedalsPage = ({ data }) => {
   return (
     <Layout backgroundColor="#d4af37" variant="light">
+      <SEO />
       <div className="d-flex justify-content-center">
         <Img
           fixed={data.headerImage.childImageSharp.fixed}

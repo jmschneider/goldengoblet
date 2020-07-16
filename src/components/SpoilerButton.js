@@ -3,10 +3,10 @@ import { Button } from "react-bootstrap"
 import SpoilerContext from "../context/SpoilerContext"
 
 const SpoilerButton = () => {
-  const { toggleSpoilers } = useContext(SpoilerContext)
+  const { showSpoilers, toggleSpoilers } = useContext(SpoilerContext)
   return (
     <Button variant="warning" onClick={toggleSpoilers}>
-      Toggle Spoilers
+      {showSpoilers ? "Hide" : "Show"} Spoilers
     </Button>
   )
 }
