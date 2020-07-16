@@ -22,7 +22,7 @@ export default function ScorePage({ data, pageContext }) {
       backgroundColor={backgroundColor}
       navButtons={<SpoilerButton />}
     >
-      <SEO />
+      <SEO title={name} />
       <ImageHeader data={data.gameImage} alt={`${name} Logo`} />
       <ScoreTable data={data.scores.nodes} notes={notes} />
       <ResultsTable data={data.scores.nodes} />

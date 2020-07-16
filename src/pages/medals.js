@@ -12,7 +12,7 @@ import GobletWins from "../components/GobletWins"
 const MedalsPage = ({ data }) => {
   return (
     <Layout backgroundColor="#d4af37" variant="light">
-      <SEO />
+      <SEO title="Medals" />
       <div className="d-flex justify-content-center">
         <Img
           fixed={data.headerImage.childImageSharp.fixed}
