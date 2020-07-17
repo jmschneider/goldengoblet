@@ -6,13 +6,7 @@ import { Helmet } from "react-helmet"
 import favicon from "../images/favicon.ico"
 import { SpoilerProvider } from "../context/SpoilerContext"
 
-const Layout = ({
-  backgroundColor,
-  currentGame,
-  navButtons,
-  variant,
-  children,
-}) => {
+const Layout = ({ theme, currentGame, navButtons, variant, children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -33,6 +27,7 @@ const Layout = ({
   return (
     <>
       <Helmet>
+        <body className={`${theme}-theme`} />
         <link
           href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap"
           rel="stylesheet"
@@ -42,11 +37,6 @@ const Layout = ({
           rel="stylesheet"
         ></link>
         <link rel="icon" type="image/png" href={favicon} sizes="16x16" />
-        <style type="text/css">{`
-          body {
-            background-color: ${backgroundColor};
-          }
-      `}</style>
       </Helmet>
       <SpoilerProvider>
         <Navbar variant={variant} expand="lg">
@@ -79,7 +69,7 @@ const Layout = ({
 }
 
 Layout.defaultProps = {
-  backgroundColor: "#202020",
+  theme: null,
   currentGame: null,
   navButtons: null,
   variant: "dark",

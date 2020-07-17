@@ -10,20 +10,19 @@ import ResultsTable from "../components/ResultsTable"
 import ImageHeader from "../components/ImageHeader"
 
 export default function ScorePage({ data, pageContext }) {
-  const { backgroundColor, name } = pageContext
+  const { theme, name } = pageContext
   const notes = data.scores.nodes
     .map(node => node.days.map(day => day.notes))
     .flat()
     .filter(Boolean)
 
   return (
-    <Layout
-      currentGame={name}
-      backgroundColor={backgroundColor}
-      navButtons={<SpoilerButton />}
-    >
+    <Layout currentGame={name} theme={theme} navButtons={<SpoilerButton />}>
       <SEO title={name} />
       <ImageHeader data={data.gameImage} alt={`${name} Logo`} />
+      <h2 id="subtitle" className="text-center">
+        GOLDEN GOBLET
+      </h2>
       <ScoreTable data={data.scores.nodes} notes={notes} />
       <ResultsTable data={data.scores.nodes} />
       <ScoreFootnotes notes={notes} />

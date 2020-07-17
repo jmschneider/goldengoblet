@@ -11,7 +11,7 @@ import GobletWins from "../components/GobletWins"
 
 const MedalsPage = ({ data }) => {
   return (
-    <Layout backgroundColor="#d4af37" variant="light">
+    <Layout theme="medals" variant="light">
       <SEO title="Medals" />
       <div className="d-flex justify-content-center">
         <Img
@@ -19,10 +19,7 @@ const MedalsPage = ({ data }) => {
           className="img-fluid"
         />
       </div>
-      <div
-        id="subtitle-medals"
-        className="d-flex justify-content-center text-nowrap"
-      >
+      <div id="subtitle" className="d-flex justify-content-center text-nowrap">
         Golden Goblet
       </div>
       <Table variant="dark" borderless>

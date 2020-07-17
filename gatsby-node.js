@@ -10,7 +10,7 @@ exports.createPages = async ({ graphql, actions }) => {
           name
           slug
           image
-          backgroundColor
+          theme
         }
       }
     }
@@ -23,11 +23,11 @@ exports.createPages = async ({ graphql, actions }) => {
       name: result.data.allGamesCsv.nodes[0].name,
       slug: result.data.allGamesCsv.nodes[0].slug,
       image: result.data.allGamesCsv.nodes[0].image,
-      backgroundColor: result.data.allGamesCsv.nodes[0].backgroundColor,
+      theme: result.data.allGamesCsv.nodes[0].theme,
     },
   })
   result.data.allGamesCsv.nodes.forEach(
-    ({ week, name, slug, image, backgroundColor }) => {
+    ({ week, name, slug, image, theme }) => {
       createPage({
         path: slug,
         component: path.resolve(`./src/templates/ScorePage.js`),
@@ -36,7 +36,7 @@ exports.createPages = async ({ graphql, actions }) => {
           name,
           slug,
           image,
-          backgroundColor,
+          theme,
         },
       })
     }

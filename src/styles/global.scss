@@ -35,85 +35,125 @@
   src: url("./fonts/Pretendo.ttf") format("truetype");
 }
 
-#subtitle-spelunky {
-  font-family: "Tekton-Bold";
-  font-size: 3rem;
-  color: #d9aa5a;
+body {
+  background-color: #202020;
+  #subtitle {
+    color: #d4af37;
+  }
 }
 
-#subtitle-tarkov {
-  font-family: "Bender-Bold";
-  font-size: 3rem;
-  color: white;
+body.medals-theme {
+  background-color: #d4af37;
+
+  #subtitle {
+    color: black;
+    font-family: "switch-blade-roman";
+    font-size: 4rem;
+  }
 }
 
-#subtitle-hitman {
-  font-family: "coolvetica";
-  font-size: 3rem;
-  color: white;
+body.spelunky-theme {
+  background-color: #000419;
+
+  #subtitle {
+    color: #d9aa5a;
+    font-family: "Tekton-Bold";
+    font-size: 3rem;
+  }
 }
 
-#subtitle-hitman2 {
-  font-family: "coolvetica";
-  font-size: 3rem;
-  color: gold;
-  letter-spacing: 13px;
+body.tarkov-theme {
+  background-color: #1a1a1a;
+
+  #subtitle {
+    font-family: "Bender-Bold";
+    font-size: 3rem;
+    color: white;
+  }
 }
 
-#subtitle-pubg {
-  font-family: "hl45";
-  font-size: 4rem;
-  color: #c56c00;
+body.hitman-theme {
+  #subtitle {
+    font-family: "coolvetica";
+    font-size: 3rem;
+    color: white;
+  }
 }
 
-#subtitle-spire {
-  font-family: "Kreon", serif;
-  font-size: 4rem;
-  color: #dab027;
+body.hitman2-theme {
+  #subtitle {
+    font-family: "coolvetica";
+    font-size: 3rem;
+    color: gold;
+    letter-spacing: 13px;
+  }
 }
 
-#subtitle-sega {
-  font-family: "sega";
-  font-size: 4rem;
-  color: #dab027;
+body.pubg-theme {
+  #subtitle {
+    font-family: "hl45";
+    font-size: 4rem;
+    color: #c56c00;
+  }
 }
 
-#subtitle-nintendo {
-  font-family: "Pretendo";
-  font-size: 4rem;
-  color: #dab027;
+body.spire-theme {
+  #subtitle {
+    font-family: "Kreon", serif;
+    font-size: 4rem;
+    color: #dab027;
+  }
 }
 
-#subtitle-snes {
-  font-size: 4rem;
-  font-weight: bold;
-  color: #dab027;
-  letter-spacing: 6px;
-}
-#subtitle-escape {
-  font-size: 4rem;
-  font-weight: bold;
-  color: #dab027;
-  letter-spacing: 6px;
+body.sega-theme {
+  #subtitle {
+    font-family: "sega";
+    font-size: 4rem;
+    color: #dab027;
+  }
 }
 
-#subtitle-mario {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #dab027;
-  letter-spacing: 4px;
-}
-#subtitle-cod {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #dab027;
-  letter-spacing: 4px;
+body.nintendo-theme {
+  #subtitle {
+    font-family: "Pretendo";
+    font-size: 4rem;
+    color: #dab027;
+  }
 }
 
-#subtitle-medals {
-  font-family: "switch-blade-roman";
-  font-size: 4rem;
-  color: black;
+body.snes-theme {
+  #subtitle {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #dab027;
+    letter-spacing: 6px;
+  }
+}
+
+body.escape-theme {
+  #subtitle {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #dab027;
+    letter-spacing: 6px;
+  }
+}
+body.mario-theme {
+  #subtitle {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #dab027;
+    letter-spacing: 4px;
+  }
+}
+
+body.cod-theme {
+  #subtitle {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #dab027;
+    letter-spacing: 4px;
+  }
 }
 
 .goblet-win {
@@ -209,7 +249,7 @@ a:hover {
 }
 
 #medalsLink:not(.active) {
-  color: rgb(212, 175, 55);
+  color: #d4af37;
 }
 
 #medalsLink.active {
