@@ -16,7 +16,7 @@ const Score = ({ day, allNotes }) => {
             {notes ? " " + "*".repeat(noteIndex + 1) : ""}
           </span>
         ) : (
-          <span>{youtube ? "Watch" : "TBD"}</span>
+          <span>{youtube ? "Watch" : score ? "Spoilers" : "TBD"}</span>
         )}
       </YoutubeLink>
     </td>

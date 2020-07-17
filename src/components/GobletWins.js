@@ -10,7 +10,7 @@ const MedalsTable = ({ scores, winners }) => {
     return (
       <td key={winner.name}>
         {wins.nodes.map(({ name, slug }) => (
-          <Link key={slug} to={`/${slug}`}>
+          <Link key={slug} to={`/${slug}`} className="d-block my-2">
             <FontAwesomeIcon icon="trophy" className="goblet-win" />
             <span className="ml-2 goblet-game">{name}</span>
           </Link>
