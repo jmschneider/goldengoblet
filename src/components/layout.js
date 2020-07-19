@@ -22,7 +22,6 @@ const Layout = ({ theme, currentGame, navButtons, variant, children }) => {
       }
     }
   `)
-
   return (
     <>
       <Helmet>
@@ -43,11 +42,15 @@ const Layout = ({ theme, currentGame, navButtons, variant, children }) => {
           <Navbar.Collapse id="navbarSupportedContent">
             <Nav className="mr-auto">
               <NavDropdown title={currentGame || "Games"} id="gamesDropdown">
-                {data.allGamesCsv.nodes.reverse().map(({ name, slug }) => (
-                  <NavDropdown.Item as={Link} to={`/${slug}`} key={slug}>
                     {name}
-                  </NavDropdown.Item>
-                ))}
+                {data.allGamesCsv.nodes
+                  .slice()
+                  .reverse()
+                  .map(({ name, slug }) => (
+                    <NavDropdown.Item as={Link} to={`/${slug}`} key={slug}>
+                      {name}
+                    </NavDropdown.Item>
+                  ))}
               </NavDropdown>
               <Nav.Link
                 as={Link}
