@@ -2,8 +2,6 @@ import React from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap"
 import { Helmet } from "react-helmet"
-
-import favicon from "../images/favicon.ico"
 import { SpoilerProvider } from "../context/SpoilerContext"
 
 const Layout = ({ theme, currentGame, navButtons, variant, children }) => {
@@ -34,7 +32,6 @@ const Layout = ({ theme, currentGame, navButtons, variant, children }) => {
           href="https://fonts.googleapis.com/css2?family=Playball&display=swap"
           rel="stylesheet"
         ></link>
-        <link rel="icon" type="image/png" href={favicon} sizes="16x16" />
       </Helmet>
       <SpoilerProvider>
         <Navbar variant={variant} expand="lg">
