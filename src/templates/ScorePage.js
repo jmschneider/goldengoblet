@@ -22,7 +22,7 @@ export default function ScorePage({ data, pageContext }) {
     <Layout currentGame={name} theme={theme} navButtons={<SpoilerButton />}>
       <SEO title={name} />
       <ImageHeader data={data.gameImage} alt={`${name} Logo`} />
-      <h2 id="subtitle" className="text-center">
+      <h2 id="subtitle" className="text-center text-nowrap">
         GOLDEN GOBLET
       </h2>
       <ScoreTable data={data.scores.nodes} notes={notes} />
@@ -52,8 +52,8 @@ export const query = graphql`
     gameImage: file(relativePath: { eq: $image }) {
       publicURL
       childImageSharp {
-        fixed(width: 840) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 980) {
+          ...GatsbyImageSharpFluid
         }
       }
     }

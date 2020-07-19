@@ -5,9 +5,9 @@ const ImageHeader = ({ data, alt }) => {
   const { publicURL, childImageSharp } = data
 
   return (
-    <div className="d-flex justify-content-center">
+    <div className="mx-auto">
       {childImageSharp ? (
-        <Img fixed={childImageSharp.fixed} className="img-fluid" alt={alt} />
+        <Img fluid={childImageSharp.fluid} className="img-fluid" alt={alt} />
       ) : (
         <img src={publicURL} className="img-fluid" alt={alt} />
       )}
