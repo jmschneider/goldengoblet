@@ -42,7 +42,6 @@ const Layout = ({ theme, currentGame, navButtons, variant, children }) => {
           <Navbar.Collapse id="navbarSupportedContent">
             <Nav className="mr-auto">
               <NavDropdown title={currentGame || "Games"} id="gamesDropdown">
-                    {name}
                 {data.allGamesCsv.nodes
                   .slice()
                   .reverse()
