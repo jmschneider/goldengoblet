@@ -8,6 +8,7 @@ import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import MedalsTable from "../components/MedalsTable"
 import GobletWins from "../components/GobletWins"
+import YoutubeChannelLink from "../components/YoutubeChannelLink"
 
 const MedalsPage = ({ data }) => {
   return (
@@ -25,8 +26,10 @@ const MedalsPage = ({ data }) => {
       <Table variant="dark" borderless>
         <thead>
           <tr>
-            {data.scores.group.map(winner => (
-              <th key={winner.name}>{winner.name}</th>
+            {data.scores.group.map(({ name }) => (
+              <th key={name}>
+                <YoutubeChannelLink name={name}>{name}</YoutubeChannelLink>
+              </th>
             ))}
           </tr>
         </thead>

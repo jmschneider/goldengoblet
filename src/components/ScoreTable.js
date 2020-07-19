@@ -3,6 +3,7 @@ import { Table } from "react-bootstrap"
 
 import Score from "./Score"
 import ViewsyncLink from "./ViewsyncLink"
+import YoutubeChannelLink from "./YoutubeChannelLink"
 
 const ScoreTable = ({ data, notes }) => {
   let rows = []
@@ -24,9 +25,9 @@ const ScoreTable = ({ data, notes }) => {
       <thead>
         <tr>
           <th scope="col">Viewsync</th>
-          {data.map(score => (
-            <th scope="col" key={score.id}>
-              {score.name}
+          {data.map(({ id, name }) => (
+            <th scope="col" key={id}>
+              <YoutubeChannelLink name={name}>{name}</YoutubeChannelLink>
             </th>
           ))}
         </tr>
