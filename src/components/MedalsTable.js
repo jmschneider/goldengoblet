@@ -12,7 +12,7 @@ const MedalsTable = ({ scores }) => {
   const [contestantScores, setContestantScores] = useState(() =>
     scores.reduce((h, contestant) => {
       h[contestant.name] = contestant.nodes
-        .map(week => week.days)
+        .map(game => game.days)
         .flat()
         .map(day => day.place)
         .filter(Boolean)

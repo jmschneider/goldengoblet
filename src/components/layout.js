@@ -14,9 +14,8 @@ const Layout = ({ theme, currentGame, navButtons, variant, children }) => {
           title
         }
       }
-      allGamesCsv(sort: { order: DESC, fields: week }) {
+      allGamesCsv {
         nodes {
-          week
           slug
           name
         }
@@ -43,9 +42,9 @@ const Layout = ({ theme, currentGame, navButtons, variant, children }) => {
           <Navbar.Toggle aria-controls="navbarSupportedContent" />
           <Navbar.Collapse id="navbarSupportedContent">
             <Nav className="mr-auto">
-              <NavDropdown title={currentGame || "Games"} id="weeksDropdown">
-                {data.allGamesCsv.nodes.map(({ name, slug, week }) => (
-                  <NavDropdown.Item as={Link} to={`/${slug}`} key={week}>
+              <NavDropdown title={currentGame || "Games"} id="gamesDropdown">
+                {data.allGamesCsv.nodes.reverse().map(({ name, slug }) => (
+                  <NavDropdown.Item as={Link} to={`/${slug}`} key={slug}>
                     {name}
                   </NavDropdown.Item>
                 ))}

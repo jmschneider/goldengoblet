@@ -5,9 +5,9 @@ const ImageHeader = ({ data, alt }) => {
   const { publicURL, childImageSharp } = data
 
   return (
-    <div className="text-center">
+    <div className="text-center" id="image-header">
       {childImageSharp ? (
-        <Img fluid={childImageSharp.fluid} className="img-fluid" alt={alt} />
+        <Img fluid={childImageSharp.fluid} alt={alt} />
       ) : (
         <img src={publicURL} className="img-fluid" alt={alt} />
       )}

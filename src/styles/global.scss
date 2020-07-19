@@ -199,6 +199,10 @@ body.cod-theme {
 #footnote {
   color: white;
   font-size: 0.75rem;
+
+  ul {
+    @extend .list-unstyled;
+  }
 }
 
 #points-calc {

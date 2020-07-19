@@ -21,6 +21,7 @@ module.exports = {
       },
     },
     `gatsby-transformer-csv`,
+    `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-sass`,

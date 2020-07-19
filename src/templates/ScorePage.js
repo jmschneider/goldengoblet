@@ -27,15 +27,18 @@ export default function ScorePage({ data, pageContext }) {
       </h2>
       <ScoreTable data={data.scores.nodes} notes={notes} />
       <ResultsTable data={data.scores.nodes} />
-      <ScoreFootnotes notes={notes} />
+      <ScoreFootnotes
+        notes={notes}
+        markdown={data?.gameMarkdown?.childMarkdownRemark?.html}
+      />
     </Layout>
   )
 }
 
 export const query = graphql`
-  query($image: String!, $week: String!) {
+  query($image: String!, $slug: String!) {
     scores: allScoreCsv(
-      filter: { week: { eq: $week } }
+      filter: { slug: { eq: $slug } }
       sort: { fields: name, order: ASC }
     ) {
       nodes {
@@ -49,13 +52,22 @@ export const query = graphql`
         }
       }
     }
+    gameMarkdown: file(name: { glob: $slug }) {
+      childMarkdownRemark {
+        html
+      }
+    }
     gameImage: file(relativePath: { eq: $image }) {
       publicURL
-      childImageSharp {
-        fluid(maxWidth: 980) {
-          ...GatsbyImageSharpFluid
-        }
-      }
     }
   }
 `
+
+// gameImage: file(relativePath: { eq: $image }) {
+//   publicURL
+//   childImageSharp {
+//     fluid(maxWidth: 840, maxHeight: 190) {
+//       ...GatsbyImageSharpFluid
+//     }
+//   }
+// }
