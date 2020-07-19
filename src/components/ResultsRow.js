@@ -13,14 +13,10 @@ const ResultsRow = ({ data, place }) => {
     <tr>
       <th scope="row">{RESULTS_LABELS[place]}</th>
       {data.map(score => (
-        <td key={score.id}>
-          {showSpoilers ? (
-            <span className={place}>
-              {score.days.filter(day => day.place === place).length}
-            </span>
-          ) : (
-            "Spoilers"
-          )}
+        <td key={score.id} className={place}>
+          {showSpoilers
+            ? score.days.filter(day => day.place === place).length
+            : "Spoilers"}
         </td>
       ))}
     </tr>

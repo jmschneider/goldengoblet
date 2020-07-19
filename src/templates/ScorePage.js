@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/Layout"
@@ -11,10 +11,12 @@ import ImageHeader from "../components/ImageHeader"
 
 export default function ScorePage({ data, pageContext }) {
   const { theme, name } = pageContext
-  const notes = data.scores.nodes
-    .map(node => node.days.map(day => day.notes))
-    .flat()
-    .filter(Boolean)
+  const [notes, setNotes] = useState(() =>
+    data.scores.nodes
+      .map(node => node.days.map(day => day.notes))
+      .flat()
+      .filter(Boolean)
+  )
 
   return (
     <Layout currentGame={name} theme={theme} navButtons={<SpoilerButton />}>

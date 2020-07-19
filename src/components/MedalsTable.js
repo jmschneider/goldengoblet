@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const POINTS = {
@@ -9,23 +9,27 @@ const POINTS = {
   RANKINGS_MAP = ["first", "second", "third"]
 
 const MedalsTable = ({ scores }) => {
-  const contestantScores = scores.reduce((h, contestant) => {
-    h[contestant.name] = contestant.nodes
-      .map(week => week.days)
-      .flat()
-      .map(day => day.place)
-      .filter(Boolean)
-      .reduce(
-        (medals, place) => {
-          if (medals[place] !== undefined) medals[place]++
-          if (POINTS[place] !== undefined) medals.score += POINTS[place]
-          return medals
-        },
-        { first: 0, second: 0, third: 0, score: 0 }
-      )
-    return h
-  }, {})
-  const rankings = calculateRanking(contestantScores)
+  const [contestantScores, setContestantScores] = useState(() =>
+    scores.reduce((h, contestant) => {
+      h[contestant.name] = contestant.nodes
+        .map(week => week.days)
+        .flat()
+        .map(day => day.place)
+        .filter(Boolean)
+        .reduce(
+          (medals, place) => {
+            if (medals[place] !== undefined) medals[place]++
+            if (POINTS[place] !== undefined) medals.score += POINTS[place]
+            return medals
+          },
+          { first: 0, second: 0, third: 0, score: 0 }
+        )
+      return h
+    }, {})
+  )
+  const [rankings, setRankings] = useState(() =>
+    calculateRanking(contestantScores)
+  )
 
   return (
     <tbody id="medal-totals">
