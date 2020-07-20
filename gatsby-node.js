@@ -41,3 +41,18 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     })
 }
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  const typeDefs = `
+    type GamesCsv implements Node {
+      scores: [ScoreCsv] @link(by: "slug", from: "slug")
+    }
+
+    type ScoreCsv implements Node {
+      game: [GamesCsv] @link(by: "slug", from: "slug")
+      youtube: [YoutubeCsv] @link(by: "name", from: "name")
+    }
+  `
+  createTypes(typeDefs)
+}
